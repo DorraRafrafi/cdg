@@ -1,106 +1,102 @@
 <?php
 
 namespace App\Entity;
-use FOS\UserBundle\Model\User as BaseUser;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+
 /**
- * User
- * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User extends BaseUser
+class User
 {
-    //user
-      /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected  $token;
+    private $token;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $first_name;
+    private $first_name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $last_name;
+    private $last_name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $telephone;
+    private $telephone;
 
     /**
      * @ORM\Column(type="smallint")
      */
-    protected $email_verified;
+    private $email_verified;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $nationality;
+    private $nationality;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    protected $birthday;
+    private $birthday;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $zip_code;
+    private $zip_code;
 
     /**
      * @ORM\Column(type="smallint")
      */
-    protected $telephone_verified;
+    private $telephone_verified;
 
     /**
      * @ORM\Column(type="smallint")
      */
-    protected $failed_attempts;
+    private $failed_attempts;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    protected $last_failed_attempt_at;
+    private $last_failed_attempt_at;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    protected $created_at;
+    private $created_at;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $api_token;
+    private $api_token;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\UsersGender")
      */
-    protected $gender;
+    private $gender;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\SmsVerification", cascade={"persist", "remove"})
      */
-    protected $smsVerification;
+    private $smsVerification;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Testimony", mappedBy="user")
      */
-    protected $testimonies;
+    private $testimonies;
 
     public function __construct()
     {
